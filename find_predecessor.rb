@@ -1,11 +1,11 @@
 require "NeoPathfinding"
 
 def find_predessesor(a, b)
-  ancestor_group_one = File.readlines("data/predessesors/group_one.txt")
-  ancestor_group_two = File.readlines("data/predessesors/group_two.txt")
-  ancestor_group_tre = File.readlines("data/predessesors/group_tre.txt")
+  current_group_one = File.readlines("data/predessesors/group_one.txt")
+  current_group_two = File.readlines("data/predessesors/group_two.txt")
+  current_group_tre = File.readlines("data/predessesors/group_tre.txt")
   
-  size_limit = ancestor_group_one.size.to_i, ancestor_group_two.size.to_i, ancestor_group_tre.size.to_i
+  size_limit = current_group_one.size.to_i, current_group_two.size.to_i, current_group_tre.size.to_i
   
   group_one_limit = size_limit[0]
   group_two_limit = size_limit[1]
@@ -14,14 +14,14 @@ def find_predessesor(a, b)
   index = 0
   
   group_one_limit.times do
-    current_ancestors = ancestor_group_one[index].strip.to_s
+    current_group_selection = current_group_one[index].strip.to_s
     
-    if current_ancestors == a
-      $factoid_one = "#{current_ancestors} is the current generation of #{b} as its predessesor, therefore: #{a}"
+    if not current_group_selection == a
+      puts"#{b} is not the previous generation of #{current_group_selection}, therefore not: #{a} is the current generation."
+    else      
+      $factoid_one = "#{b} is the previous generation of #{current_group_selection}, therefore: #{a} is the current generation."
     
-      puts "#{current_ancestors} is the current generation of #{b} as its predessesor, therefore: #{a}"
-    else
-      puts "#{current_ancestors} is not the current generation of #{b} as its predessesor, therefore: #{a}"
+      puts "#{b} is the previous generation of #{current_group_selection}, therefore: #{a} is the current generation."
     end
     
     index = index + 1
@@ -30,14 +30,14 @@ def find_predessesor(a, b)
   index = 0
   
   group_two_limit.times do
-    current_ancestors = ancestor_group_two[index].strip.to_s
-
-    if current_ancestors == a
-      $factoid_two = "#{current_ancestors} is the current generation of #{b} as its predessesor, therefore: #{a}"
+    current_group_selection = current_group_two[index].strip.to_s
     
-      puts "#{current_ancestors} is the current generation of #{b} as its predessesor, therefore: #{a}"
-    else
-      puts "#{current_ancestors} is not the current generation of #{b} as its predessesor, therefore: #{a}"
+    if not current_group_selection == a
+      puts"#{b} is not the previous generation of #{current_group_selection}, therefore not: #{a} is the current generation."
+    else      
+      $factoid_two = "#{b} is the previous generation of #{current_group_selection}, therefore: #{a} is the current generation."
+    
+      puts "#{b} is the previous generation of #{current_group_selection}, therefore: #{a} is the current generation."
     end
     
     index = index + 1
@@ -46,15 +46,14 @@ def find_predessesor(a, b)
   index = 0
   
   group_two_limit.times do
-    current_ancestors = ancestor_group_two[index].strip.to_s
-
-    if current_ancestors == a
-      $factoid_tre = "#{current_ancestors} is the current generation of #{b} as its predessesor, therefore: #{a}"
+    current_group_selection = current_group_tre[index].strip.to_s
     
-      puts "#{current_ancestors} is the current generation of #{b} as its predessesor, therefore: #{a}"
-
-    else
-      puts "#{current_ancestors} is not the current generation of #{b} as its predessesor, therefore: #{a}"
+    if not current_group_selection == a
+      puts"#{b} is not the previous generation of #{current_group_selection}, therefore not: #{a} is the current generation."
+    else      
+      $factoid_tre = "#{b} is the previous generation of #{current_group_selection}, therefore: #{a} is the current generation."
+    
+      puts "#{b} is the previous generation of #{current_group_selection}, therefore: #{a} is the current generation."
     end
     
     index = index + 1
@@ -78,4 +77,4 @@ end
 find_predessesor("Guillotine", "Halifax Gibbet")
 analyze_predessecors
 
-#thresholding($current_probability, 12, 12)
+thresholding($current_probability, 12, 12)
