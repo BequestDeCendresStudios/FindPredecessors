@@ -1,9 +1,9 @@
 require "NeoPathfinding"
 
 def find_predessesor(a, b)
-  current_group_one = File.readlines("data/predessesors/group_one.txt")
-  current_group_two = File.readlines("data/predessesors/group_two.txt")
-  current_group_tre = File.readlines("data/predessesors/group_tre.txt")
+  current_group_one = File.readlines("data/current_group/group_one.txt")
+  current_group_two = File.readlines("data/current_group/group_two.txt")
+  current_group_tre = File.readlines("data/current_group/group_tre.txt")
   
   size_limit = current_group_one.size.to_i, current_group_two.size.to_i, current_group_tre.size.to_i
   
@@ -77,4 +77,4 @@ end
 find_predessesor("Guillotine", "Halifax Gibbet")
 analyze_predessecors
 
-thresholding($current_probability, 12, 12)
+#thresholding($current_probability, 12, 12)
